@@ -26,12 +26,11 @@ else
   ## run image:
   # -p expose port
   # -d run in detached mode
-  # -i Keep STDIN open even if not attached
-  # -t Allocate a pseudo-tty
+  # -v mount a volume
   # --name define a name for the container(optional)
   DOCKER_NEXUS_ID=$(docker run \
   -p 8081:8081 \
-  -dit \
+  -d
   -v nexus-data:/nexus-data \
   --name "${DOCKER_NEXUS_NAME}" "${DOCKER_NEXUS_TAG}")
 fi
