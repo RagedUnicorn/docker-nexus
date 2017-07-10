@@ -1,0 +1,6 @@
+dockery/
+.git
+.gitattributes
+.gitignore
+*.md
+MIT.LICENSE
