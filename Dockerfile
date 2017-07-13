@@ -18,12 +18,13 @@ ENV \
 ENV \
   SONATYPE_DIR=/opt/sonatype \
   NEXUS_USER=nexus \
+  NEXUS_GROUP=nexus \
   NEXUS_HOME=/opt/sonatype/nexus \
   NEXUS_DATA_DIR=/nexus-data \
   SONATYPE_WORK=/opt/sonatype/sonatype-work
 
 # explicitly set user/group IDs
-RUN addgroup -S "${NEXUS_USER}" -g 9999 && adduser -S -G "${NEXUS_USER}" -u 9999 "${NEXUS_USER}"
+RUN addgroup -S "${NEXUS_GROUP}" -g 9999 && adduser -S -G "${NEXUS_GROUP}" -u 9999 "${NEXUS_USER}"
 
 RUN \
   set -ex; \
@@ -39,7 +40,7 @@ RUN \
     -o nexus.tar.gz "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz"; \
   tar xzf nexus.tar.gz -C "${NEXUS_HOME}" --strip-components=1; \
   rm nexus.tar.gz; \
-  chown -R "${NEXUS_USER}":"${NEXUS_USER}" "${NEXUS_HOME}"
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_HOME}"
 
 # add launch script
 COPY docker-entrypoint.sh /
@@ -48,7 +49,7 @@ COPY docker-entrypoint.sh /
 COPY conf/nexus.properties "${SONATYPE_WORK}/nexus3/etc/nexus.properties"
 
 RUN \
-  chown -R "${NEXUS_USER}":"${NEXUS_USER}" "${SONATYPE_WORK}"; \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${SONATYPE_WORK}"; \
   chmod 755 docker-entrypoint.sh; \
   ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3" \
 
