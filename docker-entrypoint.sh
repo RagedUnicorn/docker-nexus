@@ -8,7 +8,7 @@ set -o nounset
 create_data_dir() {
   echo "$(date) [INFO]: Creating data directory ${NEXUS_DATA_DIR} and setting permissions"
   mkdir -p ${NEXUS_DATA_DIR}/etc ${NEXUS_DATA_DIR}/log ${NEXUS_DATA_DIR}/tmp
-  chown -R "${NEXUS_USER}":"${NEXUS_USER}" "${NEXUS_DATA_DIR}"
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_DATA_DIR}"
 }
 
 init() {
