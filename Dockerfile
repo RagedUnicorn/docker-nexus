@@ -53,7 +53,7 @@ RUN \
   chmod 755 docker-entrypoint.sh; \
   ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3" \
 
-VOLUME "${NEXUS_DATA_DIR}"
+VOLUME ["${NEXUS_DATA_DIR}"]
 
 EXPOSE 8081
 
