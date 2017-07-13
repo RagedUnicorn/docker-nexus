@@ -40,7 +40,12 @@ RUN \
     -o nexus.tar.gz "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz"; \
   tar xzf nexus.tar.gz -C "${NEXUS_HOME}" --strip-components=1; \
   rm nexus.tar.gz; \
-  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_HOME}"
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_HOME}"; \
+  mkdir -p "${SONATYPE_WORK}"; \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${SONATYPE_WORK}"; \
+  mkdir -p "${NEXUS_DATA_DIR}" "${NEXUS_DATA_DIR}/etc" "${NEXUS_DATA_DIR}/log" "${NEXUS_DATA_DIR}/tmp"; \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_DATA_DIR}"; \
+  ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3"
 
 # add launch script
 COPY docker-entrypoint.sh /
@@ -49,12 +54,10 @@ COPY docker-entrypoint.sh /
 COPY conf/nexus.properties "${SONATYPE_WORK}/nexus3/etc/nexus.properties"
 
 RUN \
-  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${SONATYPE_WORK}"; \
-  chmod 755 docker-entrypoint.sh; \
-  ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3" \
+  chmod 755 docker-entrypoint.sh
 
 VOLUME ["${NEXUS_DATA_DIR}"]
 
 EXPOSE 8081
 
-CMD ["/bin/sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

@@ -4,7 +4,7 @@ services:
     build: .
     image: ragedunicorn/nexus:1.0.0-stable
     ports:
-      - "8080:8080"
+      - "8081:8081"
     labels:
       com.ragedunicorn.nexus.environment: "prod"
       com.ragedunicorn.nexus.description: "Sonatype Nexus"

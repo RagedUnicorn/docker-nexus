@@ -6,7 +6,7 @@ services:
     volumes:
         - nexus_data:/nexus-data
     ports:
-      - "8080:8080"
+      - "8081:8081"
     labels:
       com.ragedunicorn.nexus.environment: "prod"
       com.ragedunicorn.nexus.description: "Sonatype Nexus"
