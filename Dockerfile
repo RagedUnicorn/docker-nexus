@@ -1,4 +1,4 @@
-FROM ragedunicorn/openjdk:1.0.0-jdk-stable
+FROM ragedunicorn/openjdk:1.0.1-jdk-stable
 
 LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gmail.com>" \
   com.ragedunicorn.version="1.0"
@@ -13,7 +13,7 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 ENV \
   NEXUS_VERSION=3.4.0-02 \
   SU_EXEC_VERSION=0.2-r0 \
-  CURL_VERSION=7.54.0-r0
+  CURL_VERSION=7.57.0-r0
 
 ENV \
   SONATYPE_DIR=/opt/sonatype \
