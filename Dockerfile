@@ -1,7 +1,6 @@
 FROM ragedunicorn/openjdk:1.0.1-jdk-stable
 
-LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gmail.com>" \
-  com.ragedunicorn.version="1.0"
+LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gmail.com>"
 
 #     _   __
 #    / | / /__  _  ____  _______
@@ -30,7 +29,7 @@ RUN \
   set -ex; \
   apk add --no-cache su-exec="${SU_EXEC_VERSION}"
 
-  # install nexus
+# install nexus
 RUN \
   set -ex; \
   apk add --no-cache \
