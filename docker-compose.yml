@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.4'
 services:
   nexus:
     build: .
@@ -7,6 +7,11 @@ services:
       - nexus_data:/nexus-data
     ports:
       - "8081:8081"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8081"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
     labels:
       com.ragedunicorn.nexus.environment: "prod"
       com.ragedunicorn.nexus.description: "Sonatype Nexus"
