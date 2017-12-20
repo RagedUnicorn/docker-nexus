@@ -7,6 +7,9 @@ services:
       - nexus_data:/nexus-data
     ports:
       - "8081:8081"
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/sh
     labels:
       com.ragedunicorn.nexus.environment: "dev"
       com.ragedunicorn.nexus.description: "Sonatype Nexus"
