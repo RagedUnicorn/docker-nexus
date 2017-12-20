@@ -10,7 +10,7 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 
 
 ENV \
-  NEXUS_VERSION=3.4.0-02 \
+  NEXUS_VERSION=3.6.2-01 \
   SU_EXEC_VERSION=0.2-r0 \
   CURL_VERSION=7.57.0-r0
 
