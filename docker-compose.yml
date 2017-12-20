@@ -2,7 +2,7 @@ version: '3.3'
 services:
   nexus:
     build: .
-    image: ragedunicorn/nexus:1.0.0-stable
+    image: ragedunicorn/nexus:1.0.1-stable
     volumes:
       - nexus_data:/nexus-data
     ports:
