@@ -68,16 +68,6 @@ The container is storing data in a docker volume `/nexus-data`.
 
 The production image supports a simple healthcheck whether the container port is reachable. This can be configured inside `docker-compose.yml`
 
-Containers that depend on this container can make sure that this container is up and running before starting up themselves.
-
-```
-depends_on:
-  nexus:
-    condition: service_healthy
-```
-
-This will prevent the depending container from starting up until this service is in a healthy state.
-
 ## Development
 
 To debug the container and get more insight into the container use the `docker-compose.dev.yml`
