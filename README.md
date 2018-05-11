@@ -1,8 +1,12 @@
 # docker-nexus
 
-> A docker base to build a container for Sonatype Nexus3 based on Alpine Linux
+> A docker base image to build a container for Sonatype Nexus3 based on Alpine Linux
 
-### Using the image
+## Version
+
+* Nexus 3
+
+## Using the image
 
 #### Start container
 
