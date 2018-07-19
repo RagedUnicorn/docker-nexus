@@ -1,0 +1,22 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  env:
+    - key: 'NEXUS_USER'
+      value: 'nexus'
+    - key: 'NEXUS_GROUP'
+      value: 'nexus'
+    - key: 'SONATYPE_DIR'
+      value: '/opt/sonatype'
+    - key: 'NEXUS_HOME'
+      value: '/opt/sonatype/nexus'
+    - key: 'NEXUS_DATA_DIR'
+      value: '/nexus-data'
+    - key: 'SONATYPE_WORK'
+      value: '/opt/sonatype/sonatype-work'
+  labels:
+    - key: 'com.ragedunicorn.maintainer'
+      value: 'Michael Wiesendanger <michael.wiesendanger@gmail.com>'
+  exposedPorts: ["8081"]
+  volumes: ["/nexus-data"]
+  entrypoint: ["/docker-entrypoint.sh"]

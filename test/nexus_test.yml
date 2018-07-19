@@ -1,0 +1,15 @@
+schemaVersion: 2.0.0
+
+fileExistenceTests:
+- name: 'nexus_binary'
+  path: '/opt/sonatype/nexus/bin/nexus'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
+- name: 'nexus_config'
+  path: '/opt/sonatype/sonatype-work/nexus3/etc/nexus.properties'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
+- name: 'docker_entrypoint'
+  path: '/docker-entrypoint.sh'
+  shouldExist: true
+  permissions: '-rwxr-xr-x'
