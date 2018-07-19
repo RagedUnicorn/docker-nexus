@@ -8,6 +8,10 @@ LABEL com.ragedunicorn.maintainer="Michael Wiesendanger <michael.wiesendanger@gm
 #  / /|  /  __/>  </ /_/ (__  )
 # /_/ |_/\___/_/|_|\__,_/____/
 
+# image args
+ARG NEXUS_USER=nexus
+ARG NEXUS_GROUP=nexus
+
 # software versions
 ENV \
   NEXUS_VERSION=3.11.0-01 \
@@ -15,8 +19,8 @@ ENV \
 
 ENV \
   SONATYPE_DIR=/opt/sonatype \
-  NEXUS_USER=nexus \
-  NEXUS_GROUP=nexus \
+  NEXUS_USER="${NEXUS_USER}" \
+  NEXUS_GROUP="${NEXUS_GROUP}" \
   NEXUS_HOME=/opt/sonatype/nexus \
   NEXUS_DATA_DIR=/nexus-data \
   SONATYPE_WORK=/opt/sonatype/sonatype-work \
