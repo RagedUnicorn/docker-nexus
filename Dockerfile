@@ -48,6 +48,9 @@ RUN \
   chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_DATA_DIR}"; \
   ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3"
 
+# add healthcheck script
+COPY docker-healthcheck.sh /
+
 # add launch script
 COPY docker-entrypoint.sh /
 
@@ -55,7 +58,8 @@ COPY docker-entrypoint.sh /
 COPY config/nexus.properties "${SONATYPE_WORK}/nexus3/etc/nexus.properties"
 
 RUN \
-  chmod 755 docker-entrypoint.sh
+  chmod 755 /docker-entrypoint.sh && \
+  chmod 755 /docker-healthcheck.sh
 
 VOLUME ["${NEXUS_DATA_DIR}"]
 
