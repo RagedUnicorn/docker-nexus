@@ -52,7 +52,7 @@ RUN \
 COPY docker-entrypoint.sh /
 
 # add configuration for nexus
-COPY conf/nexus.properties "${SONATYPE_WORK}/nexus3/etc/nexus.properties"
+COPY config/nexus.properties "${SONATYPE_WORK}/nexus3/etc/nexus.properties"
 
 RUN \
   chmod 755 docker-entrypoint.sh
