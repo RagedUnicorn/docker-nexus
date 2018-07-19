@@ -2,8 +2,7 @@
 # @author Michael Wiesendanger <michael.wiesendanger@gmail.com>
 # @description launch script for nexus
 
-# abort when trying to use unset variable
-set -o nounset
+set -euo pipefail
 
 create_data_dir() {
   echo "$(date) [INFO]: Creating data directory ${NEXUS_DATA_DIR} and setting permissions"
