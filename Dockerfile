@@ -61,8 +61,8 @@ RUN \
   chmod 755 /docker-entrypoint.sh && \
   chmod 755 /docker-healthcheck.sh
 
-VOLUME ["${NEXUS_DATA_DIR}"]
-
 EXPOSE 8081
+
+VOLUME ["${NEXUS_DATA_DIR}"]
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
