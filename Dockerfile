@@ -36,19 +36,19 @@ RUN \
 # install nexus
 RUN \
   set -ex; \
-  mkdir -p "${NEXUS_HOME}"; \
+  mkdir -p "${NEXUS_HOME}" && \
   if ! wget -qO nexus.tar.gz "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz"; then \
     echo >&2 "Error: Failed to download Nexus binary"; \
     exit 1; \
   fi && \
-  echo "${NEXUS_SHASUM} *nexus.tar.gz" | sha1sum -c -; \
-  tar xzf nexus.tar.gz -C "${NEXUS_HOME}" --strip-components=1; \
-  rm nexus.tar.gz; \
-  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_HOME}"; \
-  mkdir -p "${SONATYPE_WORK}"; \
-  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${SONATYPE_WORK}"; \
-  mkdir -p "${NEXUS_DATA_DIR}" "${NEXUS_DATA_DIR}/etc" "${NEXUS_DATA_DIR}/log" "${NEXUS_DATA_DIR}/tmp"; \
-  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_DATA_DIR}"; \
+  echo "${NEXUS_SHASUM} *nexus.tar.gz" | sha1sum -c - && \
+  tar xzf nexus.tar.gz -C "${NEXUS_HOME}" --strip-components=1 && \
+  rm nexus.tar.gz && \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_HOME}" && \
+  mkdir -p "${SONATYPE_WORK}" && \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${SONATYPE_WORK}" && \
+  mkdir -p "${NEXUS_DATA_DIR}" "${NEXUS_DATA_DIR}/etc" "${NEXUS_DATA_DIR}/log" "${NEXUS_DATA_DIR}/tmp" && \
+  chown -R "${NEXUS_USER}":"${NEXUS_GROUP}" "${NEXUS_DATA_DIR}" && \
   ln -sf "${NEXUS_DATA_DIR}" "${SONATYPE_WORK}/nexus3"
 
 # add healthcheck script
