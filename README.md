@@ -83,6 +83,14 @@ sh dockery/dstop.sh
 
 Most of the configuration can be changed in the `nexus.properties` configuration file. The configuration is copied into the container on buildtime. After a change to the file the container must be rebuilt.
 
+#### Build Args
+
+The image allows for certain arguments being overridden by build args.
+
+`NEXUS_USER, NEXUS_GROUP`
+
+They all have a default value and don't have to be overridden. For details see the Dockerfile.
+
 ## Persistence
 
 The container is storing data in a docker volume `/nexus-data`.
