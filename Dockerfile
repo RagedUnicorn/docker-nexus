@@ -14,7 +14,7 @@ ARG NEXUS_GROUP=nexus
 
 # software versions
 ENV \
-  NEXUS_VERSION=3.11.0-01 \
+  NEXUS_VERSION=3.13.0-01 \
   SU_EXEC_VERSION=0.2-r0
 
 ENV \
@@ -24,7 +24,7 @@ ENV \
   NEXUS_HOME=/opt/sonatype/nexus \
   NEXUS_DATA_DIR=/nexus-data \
   SONATYPE_WORK=/opt/sonatype/sonatype-work \
-  NEXUS_SHASUM=c9cd1c40861480ab6f36e22f9f69825d3af418d8
+  NEXUS_SHASUM=baf74b6d61254fd409ca8a058f113c8e18e55b0f
 
 # explicitly set user/group IDs
 RUN addgroup -S "${NEXUS_GROUP}" -g 9999 && adduser -S -G "${NEXUS_GROUP}" -u 9999 "${NEXUS_USER}"
