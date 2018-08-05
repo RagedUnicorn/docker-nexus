@@ -37,7 +37,10 @@ RUN \
 RUN \
   set -ex; \
   mkdir -p "${NEXUS_HOME}"; \
-  wget -qO nexus.tar.gz "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz"; \
+  if ! wget -qO nexus.tar.gz "https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz"; then \
+    echo >&2 "Error: Failed to download Nexus binary"; \
+    exit 1; \
+  fi && \
   echo "${NEXUS_SHASUM} *nexus.tar.gz" | sha1sum -c -; \
   tar xzf nexus.tar.gz -C "${NEXUS_HOME}" --strip-components=1; \
   rm nexus.tar.gz; \
